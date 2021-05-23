@@ -1,0 +1,73 @@
+table, td, th, textarea{
+    border: solid 2px;
+}
+
+form div {
+    margin: 20px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+}
+
+header {
+    grid-area: header;
+}
+
+.esquerda {
+    grid-area: esquerda;
+    background-color: rgb(198, 63, 252);
+}
+
+main {
+    grid-area: main;
+}
+
+.direita {
+    grid-area: direita;
+    background-color: rgb(198, 63, 252);
+}
+footer {
+    grid-area: footer;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 15% 70% 15%;
+    grid-template-areas:
+        'header header header'
+        'esquerda main direita'
+        'footer footer footer';
+/* 'header header'
+    'aside main'
+    'footer footer' */
+    grid-gap: 3px;
+    height: 100%;
+    width: 60%;
+    margin: auto;
+
+}
+header, main, footer {
+    background-color: rgb(246, 206, 250);
+    text-align: center;
+        display: flex;
+    /* alinhamento vertical */
+    justify-content: center;
+    align-content: center;
+    flex-direction:column;
+    border-radius: 5px;
+
+    border: solid 1px;
+}
+
+input, textarea {
+    width: 400px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 150px;
+}
