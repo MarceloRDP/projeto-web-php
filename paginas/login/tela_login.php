@@ -1,3 +1,9 @@
+<?php
+
+if(isset($_SESSION["nome"])) {
+    header('Location: ?pg=inicio');
+}
+?>
 
 <div id="div-form">
     <h1>Tela de Log in</h1>
@@ -5,11 +11,11 @@
     <form method="POST" action="?pg=login/user_processar">
         <div>
             <label>Nome de usuário:</label>
-            <input type="text" name="usuario" placeholder="Digite seu nome de usuário..."/>
+            <input type="text" name="usuario" required placeholder="Digite seu nome de usuário..."/>
         </div>
         <div>
             <label>Senha:</label>
-            <input type="password" name="senha" placeholder="Digite sua senha..."/>
+            <input type="password" name="senha" required placeholder="Digite sua senha..."/>
         </div>
         <button class="btns" type="submit">Entrar</button>
     </form>

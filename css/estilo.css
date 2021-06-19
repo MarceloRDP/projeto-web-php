@@ -19,7 +19,7 @@ header {
 .esquerda {
     grid-area: esquerda;
     background-color: rgb(198, 63, 252);
-    align-items: center;
+    display: block;
     
 }
 
@@ -32,8 +32,6 @@ main {
     grid-area: direita;
     background-color: rgb(198, 63, 252);
     align-items: center;
-    padding-left: 15px;
-    margin: 10px;
 }
 footer {
     grid-area: footer;

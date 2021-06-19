@@ -1,13 +1,22 @@
 <?php
 // método para redirecionar a página ao tentar acessá-la diretamente:
 if(empty($_POST) && empty($_SESSION)){
-    header('Location: ?pg=aula_form');
+    header('Location: ?pg=contato/aula_form');
 }
 //Ao receber os dados de _POST _SESSION se torna um array.
 if(!empty($_POST)) {
     $_SESSION["dados"][] = $_POST;
 }
-// session_destroy();
+
+# Insert no banco de dados
+$nome = $_POST["nome"];
+$telefone = $_POST["telefone"];
+$email = $_POST["email"];
+$mensagem = $_POST["mensagem"];
+$sql = "INSERT INTO contatos (nome, telefone, email, mensagem) VALUES ('$nome', '$telefone', '$email', '$mensagem')";
+
+mysqli_query($conn, $sql);
+exit();
 ?>
 
 <table>
@@ -35,4 +44,4 @@ if(!empty($_POST)) {
 </table>
 
 <br><br>
-<a class="btns" href="?pg=limpar_sessao">Limpar sessão</a>
+<a class="btns" href="?pg=contato/limpar_sessao">Limpar sessão</a>

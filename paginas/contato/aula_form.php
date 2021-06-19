@@ -2,7 +2,7 @@
 <div id="div-form">
     <h1>Formulário de Contato</h1>
     <!-- O formulário por padrão usa o método GET. Para formulários o mais adequado é POST e o action redireciona os dados. -->
-    <form method="POST" action="?pg=processar">
+    <form method="POST" action="?pg=contato/processar">
         <div>
             <label>Nome</label>
             <input type="text" name="nome" placeholder="Digite seu nome..."/>

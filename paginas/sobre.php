@@ -1,3 +1,7 @@
 <html>
-<h1>toma no seu cu</h1>
+<h1>Página Sobre</h1>
+<?php
+
+
+?>
 </html>

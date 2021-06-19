@@ -1,6 +1,7 @@
 <?php
-    session_destroy();
+    // session_destroy();
+    unset($_SESSION["nome"]);
 
-    header('Location: ?pg=aula_form');
+    header('Location: ?pg=login/tela_login');
 
 ?>
