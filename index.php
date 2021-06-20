@@ -11,7 +11,6 @@ session_start();
 // a diferença é que o require dá um erro fatal e interompe o script. O include apenas dá uma mensagem de erro.
 require("bd/conexao.php");
 
-$pg = 'login/tela_login';
 ?>
 
 <html>
@@ -37,7 +36,8 @@ $pg = 'login/tela_login';
                     }
                     else {
                     ?>
-                        <a href="?pg=inicio"><li>Área restrita</li></a>
+                        <a href="?pg=usuarios/cadastrar"><li>Cadastrar</li></a>
+                        <a href="?pg=usuarios/cadastros"><li>Cadastros</li></a>
                     <?php
                     }
                     ?>

@@ -1,6 +1,10 @@
 <?php
-    session_destroy();
 
-    header('Location: ?pg=contato/aula_form');
+// $sql = "DELETE FROM contatos";
+$sql = "TRUNCATE contatos";
+
+mysqli_query($conn, $sql);
+
+header('Location: ?pg=contato/aula_form');
 
 ?>

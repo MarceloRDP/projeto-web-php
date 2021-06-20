@@ -1,22 +1,50 @@
 <?php
-// método para redirecionar a página ao tentar acessá-la diretamente:
-if(empty($_POST) && empty($_SESSION)){
+
+if(empty($_POST)){
     header('Location: ?pg=contato/aula_form');
 }
-//Ao receber os dados de _POST _SESSION se torna um array.
-if(!empty($_POST)) {
-    $_SESSION["dados"][] = $_POST;
-}
 
-# Insert no banco de dados
 $nome = $_POST["nome"];
 $telefone = $_POST["telefone"];
 $email = $_POST["email"];
+$cidade_id = $_POST["cidade"];
 $mensagem = $_POST["mensagem"];
-$sql = "INSERT INTO contatos (nome, telefone, email, mensagem) VALUES ('$nome', '$telefone', '$email', '$mensagem')";
 
-mysqli_query($conn, $sql);
-exit();
+# Insert no banco de dados
+// $stmt = $conn->prepare("INSERT INTO contatos (nome, telefone, email, cidade_id, mensagem) VALUES (?, ?, ?, ?, ?)");
+// $bind_param = [$nome, $telefone, $email, $cidade_id, $mensagem];
+
+$stmt = $conn->prepare("INSERT INTO contatos (nome, telefone, email, cidade_id, mensagem) VALUES (:nome, :telefone, :email, :cidade_id, :mensagem)");
+$bind_param = ["nome" => $nome, "telefone" => $telefone, "email" => $email, "cidade_id" => $cidade_id, "mensagem" => $mensagem];
+
+// try {
+//     $conn->beginTransaction();
+//     $stmt->execute($bind_param);
+//     echo '<span style= "color: green;">Registro ' . $conn->lastInsertId() . ' inserido no banco com sucesso!</span><br>';
+//     $conn->commit();
+
+// } catch(PDOExecption $e) {
+//     $conn->rollback();
+//     echo '<span style= "color: red;">Erro ao inserir o registro no banco: ' . $e->getMessage() . '</span><br>';
+// }
+
+if($stmt->execute($bind_param)) {
+    echo '<span style= "color: green;">Registro ' . $conn->lastInsertId() . ' inserido no banco com sucesso!</span><br>';
+}
+else {
+echo '<span style= "color: red;">Erro ao inserir dados no banco!</span><br>';
+}
+
+$sql = "SELECT c.nome, c.telefone, c.email, ci.nome as cidade,
+     e.sigla as estado, c.mensagem, DATE_FORMAT(c.data_hora, '%d/%m/%Y %H:%i:%S') 
+        FROM contatos c 
+        INNER JOIN cidades ci ON ci.id = c.cidade_id 
+        INNER JOIN estados e ON e.id = ci.estado_id
+        ORDER BY ci.nome, c.data_hora DESC";
+
+// Consulta procedural: $result = mysqli_query($conn, $sql);
+$result = $conn->query($sql, PDO::FETCH_ASSOC);
+
 ?>
 
 <table>
@@ -24,19 +52,24 @@ exit();
         <th>Nome</th>
         <th>Telefone</th>
         <th>E-mail</th>
+        <th>Cidade</th>
+        <th>Estado</th>
         <th>Mensagem</th>
+        <th>Data e Hora</th>
     </tr>         
         <?php
-            foreach($_SESSION["dados"] as $valor_dados) {
+            while($linha = $result->fetch()) {
         ?>
     <tr> 
         <?php
-            foreach($valor_dados as $valor) {
+            foreach($linha as $chave => $valor) {
         ?> 
-            <td><?= $valor ?></td>
-        <?php
-            }
-        ?>
+            <td>
+                <?= $valor ?>
+            </td>
+            <?php
+                }
+            ?>
     </tr>
     <?php
         }
@@ -44,4 +77,4 @@ exit();
 </table>
 
 <br><br>
-<a class="btns" href="?pg=contato/limpar_sessao">Limpar sessão</a>
+<a class="btns" href="?pg=contato/aula_form">VOLTAR</a>

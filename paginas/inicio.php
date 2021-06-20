@@ -8,6 +8,7 @@ if(!isset($_SESSION["nome"])) {
 
 <h3>Bem-vindo, <?= $_SESSION["nome"] ?>!</h3>
 
-<img width="400px" height="400px"src="https://i.pinimg.com/originals/25/6e/9f/256e9f7e2280cd9678fe3c9d97e86e5a.gif" alt="Imagem feliz">
+<img width="300px" height="400px"src="https://m.gifmania.pt/Gifs-Animados-Desenhos-Animados/Imagens-Animadas-Dic/Gif-Animados-Ursinhos-Carinhosos/Ursinhos-Carinhosos-28096.gif" alt="Imagem feliz">
+
 
 <p><a class ="btns" href="?pg=login/limpar_sessao">S A I R</a></p>

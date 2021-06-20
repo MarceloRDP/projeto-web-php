@@ -1,17 +1,14 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$databasename = "projeto_web_2021";
+/* Connect to a MySQL database using driver invocation */
+$dsn = 'mysql:dbname=projeto_web_2021;host=localhost;charset=utf8';
+$user = 'root';
+$password = '';
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $databasename);
-
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
+try {
+  $conn = new PDO($dsn, $user, $password);
+} catch (PDOException $e) {
+  die ('DB Error: ' . $e->getMessage());
 }
-// echo "Connected successfully";
 
 ?>

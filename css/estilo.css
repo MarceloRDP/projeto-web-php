@@ -1,4 +1,4 @@
-table, td, th, textarea{
+table, td, th, textarea, select{
     border: solid 2px;
 }
 
@@ -17,10 +17,13 @@ header {
 }
 
 .esquerda {
-    grid-area: esquerda;
     background-color: rgb(198, 63, 252);
-    display: block;
-    
+    display: flex;
+    /* alinhamento vertical */
+    justify-content: center;
+    flex-direction:column;
+    border-radius: 5px;
+    border: solid 1px;
 }
 
 main {
@@ -29,9 +32,13 @@ main {
 }
 
 .direita {
-    grid-area: direita;
     background-color: rgb(198, 63, 252);
-    align-items: center;
+    display: flex;
+    /* alinhamento vertical */
+    justify-content: center;
+    flex-direction:column;
+    border-radius: 5px;
+    border: solid 1px;
 }
 footer {
     grid-area: footer;
@@ -40,7 +47,7 @@ footer {
 .container {
     display: grid;
     grid-template-columns: 15% 70% 15%;
-    grid-template-rows: 15% 70% 15%;
+    grid-template-rows: 15% auto 15%;
     grid-template-areas:
         'header header header'
         'esquerda main direita'
@@ -50,12 +57,12 @@ footer {
     'footer footer' */
     grid-gap: 3px;
     height: 100%;
-    width: 60%;
+    width: 75%;
     margin: auto;
 
 }
 header, main, footer {
-    background-color: rgb(246, 206, 250);
+    background-color: rgb(127, 182, 255);
     text-align: center;
         display: flex;
     /* alinhamento vertical */
@@ -63,11 +70,10 @@ header, main, footer {
     align-content: center;
     flex-direction:column;
     border-radius: 5px;
-
     border: solid 1px;
 }
 
-input, textarea {
+input, textarea, select{
     width: 400px;
     height: 30px;
     border-radius: 5px;
