@@ -28,7 +28,7 @@
                 <?php
                     while($linha = $resultCidades->fetch()) {
                 ?>
-                    <option value="<?= $linha["id"]?>"><?= $linha["nome"]?> (<?= $linha["sigla"]?>)</option>
+                    <option selected value="<?= $linha["id"]?>"><?= $linha["nome"]?> (<?= $linha["sigla"]?>)</option>
                 <?php
                     }
                 ?>

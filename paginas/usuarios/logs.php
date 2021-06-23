@@ -4,7 +4,7 @@ if(!isset($_SESSION["nome"])) {
     header('Location: ?pg=login/tela_login');
 }
 
-$sql = "SELECT * FROM usuarios";
+$sql = "SELECT * FROM logs";
 $result = $conn->query($sql, PDO::FETCH_ASSOC);
 
 ?>
@@ -12,13 +12,10 @@ $result = $conn->query($sql, PDO::FETCH_ASSOC);
 <table>
     <tr>
         <th>ID</th>
-        <th>Nome</th>
         <th>Usuário</th>
-        <th>Hash da senha</th>
-        <th>Data e Hora (criação)</th>
+        <th>Ação do usuário</th>
         <th>Data e Hora (atualiz.)</th>
-        <th>Editar</th>
-        <th>Excluir</th>
+
     </tr>         
         <?php
             while($linha = $result->fetch()) {
@@ -32,13 +29,7 @@ $result = $conn->query($sql, PDO::FETCH_ASSOC);
             </td>
             <?php
                 }
-            ?>
-            <td>
-                <a href="?pg=usuarios/cadastrar&id=<?= $linha["id"]?>">Editar</a>  
-            </td>
-            <td>
-                <a href="?pg=usuarios/excluir&id=<?= $linha["id"]?>">Excluir</a>   
-            </td>           
+            ?>          
     </tr>
     <?php
         }
@@ -46,4 +37,4 @@ $result = $conn->query($sql, PDO::FETCH_ASSOC);
 </table>
 
 <br><br>
-<a class="btns" href="?pg=usuarios/cadastrar">VOLTAR</a>
+<a class="btns" href="?pg=usuarios/cadastros">VOLTAR</a>

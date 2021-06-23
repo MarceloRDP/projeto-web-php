@@ -4,7 +4,7 @@ if(empty($_POST)){
     header('Location: ?pg=contato/aula_form');
 }
 
-$nome = $_POST["nome"];
+$nome = !empty($_POST["nome"]) ? $_POST["nome"] : NULL;
 $telefone = $_POST["telefone"];
 $email = $_POST["email"];
 $cidade_id = $_POST["cidade"];

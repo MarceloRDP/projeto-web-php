@@ -38,6 +38,7 @@ require("bd/conexao.php");
                     ?>
                         <a href="?pg=usuarios/cadastrar"><li>Cadastrar</li></a>
                         <a href="?pg=usuarios/cadastros"><li>Cadastros</li></a>
+                        <a href="?pg=usuarios/logs"><li>Logs do sistema</li></a>
                     <?php
                     }
                     ?>
