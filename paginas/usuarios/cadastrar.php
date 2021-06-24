@@ -13,6 +13,7 @@ if(isset($_GET['id'])) {
         <h1>Formulário de Atualização de Cadastro</h1>
         <form method="POST" action="?pg=usuarios/atualizar">
             <div>
+            <!-- Eu poderia utilizar um input type="hidden" -->
                 <label>ID:</label>
                 <input style= 'background:grey;' type="int" name="id" value="<?= $registro["id"]?>" readonly/>
             </div>
