@@ -36,6 +36,8 @@ require("bd/conexao.php");
                     }
                     else {
                     ?>
+                        <a href="?pg=gifs/cadastrar_gif"><li>Cadastrar GIFS</li></a>
+                        <a href="?pg=gifs/listar_gif"><li>Listar GIFS</li></a>
                         <a href="?pg=usuarios/cadastrar"><li>Cadastrar</li></a>
                         <a href="?pg=usuarios/cadastros"><li>Cadastros</li></a>
                         <a href="?pg=usuarios/logs"><li>Logs do sistema</li></a>
